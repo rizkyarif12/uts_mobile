@@ -1,5 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-// import 'carousel_slider_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
                 height: 300,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('Picture/78786.jpg'),
+                    image: AssetImage('assets/78786.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                       height: 50,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('Picture/LinkAja.png'),
+                          image: AssetImage('assets/LinkAja.png'),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(10),
@@ -280,7 +280,39 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          // CarouselSliderWidget()
+          SizedBox(
+              height:
+                  20), // To give some spacing between the grid and the carousel
+          CarouselSlider(
+            options: CarouselOptions(
+              height: 200.0, // Adjust the height as needed
+              autoPlay: true, // Enable auto-play
+              enlargeCenterPage: true, // Center and enlarge the current image
+              aspectRatio: 16 / 9,
+              viewportFraction: 0.8, // Controls how much space each item takes
+            ),
+            items: [
+              'assets/slide1.jpg',
+              'assets/slide2.jpg',
+              'assets/slide2.jpg',
+            ].map((imagePath) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        image: AssetImage(imagePath),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
@@ -312,16 +344,23 @@ class HomePage extends StatelessWidget {
   Widget _buildGridItem(IconData icon, String title) {
     return Card(
       color: Colors
-          .transparent, // Mengatur warna latar belakang menjadi transparan
+          .transparent, // Mengatur warna latar belakang menjadi transparan// Mengatur warna latar belakang menjadi transparan
       elevation: 0, // Menghapus bayangan
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 40, color: Colors.red),
-          const SizedBox(height: 5),
+          Container(
+            width: 50, // Lebar lingkaran
+            height: 50, // Tinggi lingkaran
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.black12, // Warna lingkaran abu-abu
+            ),
+            child: Icon(icon, size: 30, color: Colors.red),
+          ),
           Text(
             title,
-            style: const TextStyle(fontSize: 12),
+            style: const TextStyle(fontSize: 11),
             textAlign: TextAlign.center,
           ),
         ],
