@@ -63,6 +63,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/LinkAja.png
+    - assets/splash2.png
+    - assets/splash3.png
     - assets/78786.jpg
     - assets/slide1.jpg
     - assets/slide2.jpg

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:uts_mobile/main.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,9 +26,27 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Centering the Row containing the images
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/LinkAja.png', // Gambar LinkAja
+                    height: 80,
+                  ),
+                  SizedBox(width: 20), // Space between the images
+                  Image.asset(
+                    'assets/splash2.png', // Gambar splash2
+                    height: 150, // You can adjust the height as needed
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
             Image.asset(
-              'assets/LinkAja.png', // Gambar splashscreen yang diberikan
-              height: 300,
+              'assets/splash3.png', // Gambar splash3
+              height: 150, // You can adjust the height as needed
             ),
             SizedBox(height: 20),
             Text(
@@ -40,6 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: Colors.red[900],
               ),
             ),
+
             SizedBox(height: 20),
             CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.red[900]!),
