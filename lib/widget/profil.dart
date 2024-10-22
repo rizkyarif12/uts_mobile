@@ -15,15 +15,27 @@ class _ProfilState extends State<Profil> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 50,
-            ),
-            Align(
+            SizedBox(height: 40),
+
+            // Container untuk Profile (Nama dan Foto)
+            Center(
               child: Container(
+                width: 380, // Sesuaikan width
                 padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: Colors.white, // Warna latar belakang
+                  borderRadius: BorderRadius.circular(10), // Radius sudut
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
                 child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween, // Tempatkan di sini
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +50,7 @@ class _ProfilState extends State<Profil> {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          '+6285767485931',
+                          '+6285767485932',
                           style: TextStyle(
                             color: Colors.grey,
                           ),
@@ -47,19 +59,33 @@ class _ProfilState extends State<Profil> {
                     ),
                     const CircleAvatar(
                       radius: 35,
-                      backgroundImage: AssetImage(
-                          'assets/profil.jpeg'), // Pastikan gambar ada di folder assets
+                      backgroundImage: AssetImage('assets/profil.jpeg'),
                     ),
                   ],
                 ),
               ),
             ),
+
             const SizedBox(height: 10),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(3)),
+
+            // Card 1 dengan tampilan yang sama dengan "Keluar"
+            Container(
+              width: 380,
               margin:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: Column(
                 children: [
                   _buildProfileOption('Account Type', 'FULL SERVICE'),
@@ -69,26 +95,53 @@ class _ProfilState extends State<Profil> {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(3)),
+
+            // Card 2 dengan tampilan yang sama dengan "Keluar"
+            Container(
+              width: 380,
               margin:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: Column(
                 children: [
-                  _buildProfileOption('Email', 'rizkyarifiansyah@gmail.com'),
+                  _buildProfileOption('Email', 'rizkyarif@gmail.com'),
                   _buildProfileOption('Security Question', 'Set'),
                   _buildProfileOption('PIN Settings', ''),
                   _buildProfileOption('Language', 'English'),
                 ],
               ),
             ),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(3)),
+
+            // Card 3 dengan tampilan yang sama dengan "Keluar"
+            Container(
+              width: 380,
               margin:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: Column(
                 children: [
                   _buildProfileOption('Terms of Service', ''),
@@ -97,6 +150,69 @@ class _ProfilState extends State<Profil> {
                 ],
               ),
             ),
+
+            const SizedBox(height: 20),
+
+            // Tombol Logout
+            Center(
+              child: InkWell(
+                onTap: () {
+                  // Aksi saat tombol logout ditekan
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Logout'),
+                        content: const Text('Apakah anda ingin keluar?'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // Batalkan logout
+                            },
+                            child: const Text('Tidak'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pop(); // Lakukan aksi logout
+                              // Tambahkan aksi logout Anda di sini
+                            },
+                            child: const Text('Ya'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Container(
+                  width: 380,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Keluar',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20), // Spasi setelah tombol
           ],
         ),
       ),

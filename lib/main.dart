@@ -4,6 +4,7 @@ import 'package:uts_mobile/widget/splashscreen.dart';
 import 'package:uts_mobile/widget/history.dart';
 import 'package:uts_mobile/widget/homepage.dart';
 import 'package:uts_mobile/widget/qrscan.dart'; // Import the QR code scanner page
+import 'package:uts_mobile/widget/inbox.dart'; // Import the Inbox page
 
 void main() {
   runApp(MyApp());
@@ -31,7 +32,7 @@ class _BottomNavState extends State<BottomNav> {
     HomePage(),
     HistoryPage(),
     PlaceholderWidget(label: 'Pay'),
-    PlaceholderWidget(label: 'Inbox'),
+    InboxPage(), // Use the InboxPage here
     Profil(),
   ];
 
