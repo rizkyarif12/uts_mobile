@@ -77,7 +77,7 @@ class _ProfilState extends State<Profil> {
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
               child: Column(
                 children: [
-                  _buildProfileOption('Email', 'febrio@gmail.com'),
+                  _buildProfileOption('Email', 'rizkyarifiansyah@gmail.com'),
                   _buildProfileOption('Security Question', 'Set'),
                   _buildProfileOption('PIN Settings', ''),
                   _buildProfileOption('Language', 'English'),
