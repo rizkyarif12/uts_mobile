@@ -1,5 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:uts_mobile/widget/autoScrollBanner.dart'; // Jika kamu juga menggunakan Carousel
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,319 +11,162 @@ class HomePage extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
-                height: 300,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/78786.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 70,
-                left: 15,
-                right: 15,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/LinkAja.png'),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 4.0,
-                            offset: Offset(2, 2),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        _buildIconContainer(Icons.favorite),
-                        SizedBox(width: 10),
-                        _buildIconContainer(Icons.headset_mic),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                top: 140,
-                left: 12,
-                right: 12,
-                child: SizedBox(
-                  width: 360,
-                  height: 150,
-                  child: Card(
-                    color: Colors.red[900],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Hi, Rizky Arifiansyah",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 15),
-                          Row(
-                            children: [
-                              Container(
-                                width: 136,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                padding: const EdgeInsets.all(
-                                    8), // Menambahkan padding agar teks tidak terlalu dekat dengan tepi
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text("Your Balance",
-                                        style: TextStyle(color: Colors.black)),
-                                    const SizedBox(height: 5),
-                                    Row(
-                                      children: const [
-                                        Text("Rp 9.747",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                            width:
-                                                5), // Menambahkan jarak antara teks dan ikon
-                                        Icon(Icons.arrow_circle_right,
-                                            color: Colors
-                                                .red), // Menambahkan ikon panah
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(padding: const EdgeInsets.all(5)),
-                              const SizedBox(
-                                  width:
-                                      10), // Menambahkan jarak antara dua Container
-                              Container(
-                                width: 136,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                padding: const EdgeInsets.all(
-                                    8), // Menambahkan padding agar teks tidak terlalu dekat dengan tepi
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text("Bonus Balance",
-                                        style: TextStyle(color: Colors.black)),
-                                    const SizedBox(height: 5),
-                                    Row(
-                                      children: const [
-                                        SizedBox(
-                                            width:
-                                                3), // Menambahkan jarak antara teks dan ikon
-                                        Icon(Icons.currency_exchange_rounded,
-                                            color: Colors.yellow),
-                                        Padding(
-                                            padding: const EdgeInsets.all(2)),
-                                        Text("0",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                            width:
-                                                5), // Menambahkan jarak antara teks dan ikon
-                                        Icon(Icons.arrow_circle_right,
-                                            color: Colors
-                                                .red), // Menambahkan ikon panah
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _buildHeaderImage(),
+              _buildTopBar(),
+              _buildCard(),
             ],
           ),
-          Padding(padding: const EdgeInsets.only(top: 10.0)),
-          Container(
-            padding: EdgeInsets.only(left: 15.0, right: 15.0, bottom: 9.0),
-            margin: EdgeInsets.symmetric(
-                horizontal: 17.0), // Memberikan jarak kiri dan kanan
-            decoration: BoxDecoration(
-              color: Colors.white, // Mengubah warna menjadi putih
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black
-                      .withOpacity(0.25), // Warna bayangan dengan opasitas
-                  spreadRadius: 1, // Radius penyebaran bayangan
-                  blurRadius: 5, // Radius blur bayangan
-                  offset:
-                      Offset(0, 3), // Posisi bayangan (horizontal, vertikal)
-                ),
-              ], // Menambahkan border warna hitam
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.add_circle_outline,
-                          color: Colors.black38),
-                      onPressed: () {},
-                      tooltip: "TopUp",
-                    ),
-                    const Text(
-                      "TopUp",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14, // Ukuran font teks
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.outbound_outlined,
-                          color: Colors.black38),
-                      onPressed: () {},
-                      tooltip: "CashOut",
-                    ),
-                    const Text(
-                      "CashOut",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.send_outlined,
-                          color: Colors.black38),
-                      onPressed: () {},
-                      tooltip: "Send Money",
-                    ),
-                    const Text(
-                      "Send Money",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.grid_view_outlined,
-                          color: Colors.black38),
-                      onPressed: () {},
-                      tooltip: "See All",
-                    ),
-                    const Text(
-                      "See All",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 4,
-              children: [
-                _buildGridItem(Icons.phone_iphone, "Pulsa/Data"),
-                _buildGridItem(Icons.electrical_services, "Electricity"),
-                _buildGridItem(Icons.tv, "Cable TV & Internet"),
-                _buildGridItem(Icons.credit_card, "Kartu Uang Elektronik"),
-                _buildGridItem(Icons.church, "Gereja"),
-                _buildGridItem(Icons.volunteer_activism, "Infaq"),
-                _buildGridItem(Icons.volunteer_activism, "Other Donations"),
-                _buildGridItem(Icons.more_horiz, "More"),
-              ],
-            ),
-          ),
-          SizedBox(
-              height:
-                  20), // To give some spacing between the grid and the carousel
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 200.0, // Adjust the height as needed
-              autoPlay: true, // Enable auto-play
-              enlargeCenterPage: true, // Center and enlarge the current image
-              aspectRatio: 16 / 9,
-              viewportFraction: 0.8, // Controls how much space each item takes
-            ),
-            items: [
-              'assets/slide1.jpg',
-              'assets/slide2.jpg',
-              'assets/slide2.jpg',
-            ].map((imagePath) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                        image: AssetImage(imagePath),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  );
-                },
-              );
-            }).toList(),
+          const SizedBox(height: 10),
+          _buildActionMenu(),
+          const SizedBox(height: 10),
+          _buildGridMenu(),
+          const SizedBox(height: 10), // Space before the banner
+          AutoScrollBanner(), // Panggil AutoScrollBanner di sini
+// Panggil AutoScrollBanner di sini
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHeaderImage() {
+    return Container(
+      height: 300,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/78786.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTopBar() {
+    return Positioned(
+      top: 70,
+      left: 15,
+      right: 15,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildImageContainer('assets/LinkAja.png'),
+          Row(
+            children: [
+              _buildIconContainer(Icons.favorite,
+                  Colors.grey), // Mengubah warna menjadi abu-abu
+              const SizedBox(width: 10),
+              _buildIconContainer(Icons.headset_mic,
+                  Colors.grey), // Mengubah warna menjadi abu-abu
+            ],
           ),
         ],
       ),
     );
   }
 
-  Widget _buildIconContainer(IconData icon) {
+  Widget _buildCard() {
+    return Positioned(
+      top: 140,
+      left: 12,
+      right: 12,
+      child: SizedBox(
+        width: 360,
+        height: 150,
+        child: Card(
+          color: Colors.red[900],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Hi, Rizky Arifiansyah",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    _buildBalanceCard(
+                        "Your Balance", "Rp 9.747"), // Tanpa ikon uang
+                    const SizedBox(width: 10),
+                    _buildBalanceCard("Bonus Balance", "0",
+                        showMoneyIcon: true), // Dengan ikon uang
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildActionMenu() {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+      margin: const EdgeInsets.symmetric(horizontal: 17),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
         boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.25),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildActionButton(Icons.add_circle_outline, "TopUp"),
+          _buildActionButton(Icons.outbound_outlined, "CashOut"),
+          _buildActionButton(Icons.send_outlined, "Send Money"),
+          _buildActionButton(Icons.grid_view_outlined, "See All"),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGridMenu() {
+    return Expanded(
+      child: GridView.count(
+        crossAxisCount: 4,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        childAspectRatio: 0.75,
+        children: [
+          _buildGridItem(Icons.phone_iphone, "Pulsa/Data"),
+          _buildGridItem(Icons.electrical_services, "Electricity"),
+          _buildGridItem(Icons.tv, "Cable TV & Internet"),
+          _buildGridItem(Icons.credit_card, "Kartu Uang Elektronik"),
+          _buildGridItem(Icons.church, "Gereja"),
+          _buildGridItem(Icons.volunteer_activism, "Infaq"),
+          _buildGridItem(Icons.volunteer_activism, "Other Donations"),
+          _buildGridItem(Icons.more_horiz, "More"),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildImageContainer(String assetPath) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(assetPath),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
           BoxShadow(
             color: Colors.black26,
             blurRadius: 4.0,
@@ -331,40 +174,115 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      padding: const EdgeInsets.all(10),
+    );
+  }
+
+  Widget _buildIconContainer(IconData icon, Color color) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 4.0,
+            offset: Offset(2, 2),
+          ),
+        ],
+      ),
+      child: Icon(icon,
+          color: color), // Menggunakan warna yang diberikan sebagai parameter
+    );
+  }
+
+  Widget _buildBalanceCard(String title, String amount,
+      {bool showMoneyIcon = false}) {
+    return Container(
+      width: 136,
+      height: 70,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: const EdgeInsets.all(8),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: Colors.black38),
+          Text(title, style: const TextStyle(color: Colors.black)),
           const SizedBox(height: 5),
+          Row(
+            children: [
+              if (showMoneyIcon)
+                const Icon(Icons.currency_exchange,
+                    color:
+                        Colors.yellow), // Tampilkan ikon uang jika diperlukan
+              Padding(padding: const EdgeInsets.only(right: 5)),
+              Text(
+                amount,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 5),
+              const Icon(Icons.arrow_circle_right, color: Colors.red),
+            ],
+          ),
         ],
       ),
     );
   }
 
+  Widget _buildActionButton(IconData icon, String label) {
+    return Column(
+      children: [
+        IconButton(
+          icon: Icon(icon, color: Colors.black38),
+          onPressed: () {},
+        ),
+        Text(
+          label,
+          style: const TextStyle(color: Colors.black, fontSize: 14),
+        ),
+      ],
+    );
+  }
+
   Widget _buildGridItem(IconData icon, String title) {
-    return Card(
-      color: Colors
-          .transparent, // Mengatur warna latar belakang menjadi transparan// Mengatur warna latar belakang menjadi transparan
-      elevation: 0, // Menghapus bayangan
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 50, // Lebar lingkaran
-            height: 50, // Tinggi lingkaran
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.black12, // Warna lingkaran abu-abu
-            ),
-            child: Icon(icon, size: 30, color: Colors.red),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2), // Warna bayangan
+                blurRadius: 4.0, // Radius blur bayangan
+                spreadRadius: 1.0, // Radius penyebaran bayangan
+                offset: const Offset(
+                    0, 2), // Posisi bayangan (horizontal, vertikal)
+              ),
+            ],
           ),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 11),
-            textAlign: TextAlign.center,
+          child: Center(
+            // Mengatur ikon agar tetap di tengah
+            child: Icon(icon, size: 25, color: Colors.red),
           ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 11),
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

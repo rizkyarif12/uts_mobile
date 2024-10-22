@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'widget/history.dart'; // Import the HistoryPage
-import 'widget/homepage.dart'; // Import the HomePage
+import 'package:uts_mobile/widget/profil.dart';
+import 'widget/splashscreen.dart';
+import 'widget/history.dart';
+import 'widget/homepage.dart';
+import 'widget/profil.dart'; // Ganti AccountPage dengan Profil
 
 void main() {
   runApp(MyApp());
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNav(),
+      home: SplashScreen(),
     );
   }
 }
@@ -29,7 +32,7 @@ class _BottomNavState extends State<BottomNav> {
     HistoryPage(),
     PlaceholderWidget(label: 'Pay'),
     PlaceholderWidget(label: 'Inbox'),
-    PlaceholderWidget(label: 'Account'),
+    Profil(), // Ganti AccountPage dengan Profil
   ];
 
   void _onItemTapped(int index) {
@@ -46,6 +49,8 @@ class _BottomNavState extends State<BottomNav> {
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.black54,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
@@ -55,6 +60,12 @@ class _BottomNavState extends State<BottomNav> {
               icon: Icon(Icons.account_circle), label: 'Account'),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
+        onPressed: () => _onItemTapped(2),
+        child: Icon(Icons.qr_code_scanner_outlined, color: Colors.white),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
