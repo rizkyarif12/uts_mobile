@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uts_mobile/widget/profil.dart';
-import 'widget/splashscreen.dart';
-import 'widget/history.dart';
-import 'widget/homepage.dart';
-import 'widget/profil.dart'; // Ganti AccountPage dengan Profil
+import 'package:uts_mobile/widget/splashscreen.dart';
+import 'package:uts_mobile/widget/history.dart';
+import 'package:uts_mobile/widget/homepage.dart';
+import 'package:uts_mobile/widget/qrscan.dart'; // Import the QR code scanner page
 
 void main() {
   runApp(MyApp());
@@ -32,13 +32,38 @@ class _BottomNavState extends State<BottomNav> {
     HistoryPage(),
     PlaceholderWidget(label: 'Pay'),
     PlaceholderWidget(label: 'Inbox'),
-    Profil(), // Ganti AccountPage dengan Profil
+    Profil(),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  void _onItemTapped(int index) async {
+    if (index == 2) {
+      // Navigate to QR code scanner
+      final result = await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => QRCodeScannerPage()),
+      );
+      // Handle the scanned QR code result if needed
+      if (result != null) {
+        // For example, you can show a dialog or update the UI
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Scanned QR Code'),
+            content: Text(result.toString()),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
   @override
